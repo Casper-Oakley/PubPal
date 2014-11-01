@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=9,chrome=1">
+		<meta name="description" content="WPS CW">
+		<title>PubPal - Login</title>
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<!--Jquery released under MIT, no permission needed to use. Origin: https://jquery.org-->
+		<script src="js/jquery-2.1.0.min.js"></script>
+		<script src="js/jquery.form.js"></script>
+		<!--jscolor under LGPL, no permission needed to use. Origin: http://jscolor.com/-->
+		<script src="js/index.js"></script>
+	</head>
+	<body>
+	<div class="col-md-6 col-md-offset-3">
+		<h2> Title <small>SubTitle.</small></h2>
+		<hr>
+		<div class="canvas">
+			<table>
+				<tr>
+					<td>
+						<canvas id="stickerCanvas" width="300" height="300"></canvas>
+						<div class="form">
+							<form id="shape">
+							<div class="col-md-12">
+							<div class="radio">
+								<label>
+									<input type="radio" name="shape" class="radio" id="square" value="square" checked>
+									Square
+								</label>
+								</div>
+							<div class="radio">
+								<label>
+								<input type="radio" name="shape" class="radio" id="circle" value="circle">
+								Circle
+								</label>
+								</div>
+								</div>
+								<div class="col-md-12">
+								<input class="form-control input-md" type="text" name="text" placeholder="Insert text here" id="textbox" size=20>
+								</div>
+								<div class="col-md-12">
+								<select name="font size" id="fontsize" class="form-control">
+									<option value=8>8px</option>
+									<option value=12>12px</option>
+									<option value=16>16px</option>
+									<option value=20>20px</option>
+									<option value=24 selected>24px</option>
+									<option value=28>28px</option>
+									<option value=32>32px</option>
+								</select>
+								</div>
+								<div class="col-md-12">
+								<select name="font types" id="fonttypes" class="form-control">
+									<option value="Arial" selected>Arial</option>
+									<option value="Verdana">Verdana</option>
+									<option value="Comic Sans MS">Comic Sans MS</option>
+									<option value="Courier new">Courier new</option>
+								</select>
+								</div>
+								<div class="col-md-12">
+								<div class="row">
+								<div class="col-md-4">
+								Background colour:</div><div class="col-md-8"> <input class="color" id="colour" value="#00FFFF">
+								</div>
+								</div>
+								</div>
+								<div class="col-md-4">
+								Font colour:</div><div class="col-md-8"> <input class="color" id="fontcolour" value="#000000">
+								</div>
+							</form>
+						<form style="margin-left:20%" class="col-md-12">
+							<input type="button" class="btn btn-default" id="confirm" value="submit">
+						</form>
+						</div>
+					</td>
+					<td>
+						<div class="imageScroll">
+							<img border="0" src="./img/sample/1.png" alt="image sample one" width="100" height="100" class="imageScrollEntry">
+							<img border="0" src="./img/sample/2.png" alt="image sample two" width="100" height="100" class="imageScrollEntry">
+							<img border="0" src="./img/sample/3.jpg" alt="image sample three" width="100" height="100" class="imageScrollEntry">
+							<img border="0" src="./img/sample/4.PNG" alt="image sample four" width="100" height="100" class="imageScrollEntry">
+							<img border="0" src="./img/sample/5.png" alt="image sample five" width="100" height="100" class="imageScrollEntry">
+						</div>
+		<form class="uploadForm" id="uploader" action="/imageup" method="post" enctype="multipart/form-data">
+			<input type="file" class="input-file" id="uploadfile" name="uploadfile">
+		</form>
+		<p id="isupload"></p>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<hr id="alertlocation">
+	</div>
+		<script src="js/bootstrap.min.js"></script>
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+		<!--bootstrap released under MIT, no permission needed to use. Origin: https://getbootstrap.com-->
+	</body>
+</html>

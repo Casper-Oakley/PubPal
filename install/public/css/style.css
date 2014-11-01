@@ -1,0 +1,54 @@
+body {
+	padding: 50px;
+	font: 14px  Verdana, Helvetica, Arial, sans-serif;
+}
+
+p {
+	font-size: 13px;
+}
+
+a {
+  color: #00B7FF;
+}
+
+table{
+	border-collapse:collapse;
+}
+
+td {
+	border-style: solid;
+	border-width: 2px;
+	padding: 0px;
+	max-width: 320px;
+}
+
+.uploadForm {
+	max-width: 200px;
+}
+
+.canvas {
+	border-style: solid;
+	border-width: 10px;
+	display: inline-block;
+}
+
+.imageScroll {
+	overflow-y: scroll;
+	max-width: 200px;
+	max-height: 500px;
+}
+
+.imageScrollEntry {
+	padding-top:10px;
+	padding-bottom:10px;
+	padding-left:10px;
+	padding-right:10px;
+	background-origin: border-box;
+	background-color: #FFFFFF;
+}
+
+.orderBox {
+	padding-top:10px;
+	padding-left:10px;
+	padding-right:10px;
+}
