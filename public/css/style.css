@@ -52,3 +52,9 @@ td {
 	padding-left:10px;
 	padding-right:10px;
 }
+
+#map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
