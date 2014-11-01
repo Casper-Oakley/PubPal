@@ -6,7 +6,7 @@ window.onload = function(){
 	});
 	socket.on('accept', function(data){
 		if(data){
-		document.cookie=JSON.stringify(data);
+		document.cookie=JSON.stringify($('#username').val());
 		window.location.href="/home";
 		}
 		else{
