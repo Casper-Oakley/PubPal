@@ -23,6 +23,18 @@ app.get('/map',function(req,res){
 	res.render('map',{title:'PubPal - Map'});
 });
 
+app.get('/home',function(req,res){
+	res.render('home',{title:'PubPal - Home'});
+});
+
+app.get('/signup',function(req,res){
+	res.render('signup',{title:'PubPal - Sign Up'});
+});
+
+app.get('/create',function(req,res){
+	res.render('create',{title:'PubPal - Create'});
+});
+
 server.listen(app.get('port'), function(){
 	console.log('Express server up and running on port ' + app.get('port'));
 });
