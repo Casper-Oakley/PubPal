@@ -16,9 +16,17 @@ app.use(express.static('public'));
 //app.use(favicon(__dirname + '/public/favicon.ico'));
 
 app.get('/',function(req,res){
-	res.render('index',{title:'Sticker Maker - Make'});
+	res.render('index',{title:'PubPal - Login'});
+});
+
+app.get('/map',function(req,res){
+	res.render('map',{title:'PubPal - Map'});
 });
 
 server.listen(app.get('port'), function(){
 	console.log('Express server up and running on port ' + app.get('port'));
+});
+
+io.sockets.on('connection', function (ws){ //ws is client websocket
+	//do something with ws
 });
