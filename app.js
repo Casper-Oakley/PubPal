@@ -3,7 +3,13 @@ var express = require('express')
   , app = express()
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server)
+  , mongodb = require('mongodb')
+  , mongoClient = mongodb.MongoClient
+  , mongoose = require('mongoose')
   , hbs = require('hbs');
+
+var MONGOHQ_URL='mongodb://client:clientpass@ds049180.mongolab.com:49180/heroku_app31187440'
+mongoose.connect(MONGOHQ_URL);
 
 
 // view engine setup
@@ -21,6 +27,18 @@ app.get('/',function(req,res){
 
 app.get('/map',function(req,res){
 	res.render('map',{title:'PubPal - Map'});
+});
+
+app.get('/home',function(req,res){
+	res.render('home',{title:'PubPal - Home'});
+});
+
+app.get('/signup',function(req,res){
+	res.render('signup',{title:'PubPal - Sign Up'});
+});
+
+app.get('/create',function(req,res){
+	res.render('create',{title:'PubPal - Create'});
 });
 
 server.listen(app.get('port'), function(){
