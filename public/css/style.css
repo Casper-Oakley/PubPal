@@ -32,25 +32,12 @@ td {
 	display: inline-block;
 }
 
-.imageScroll {
-	overflow-y: scroll;
-	max-width: 200px;
-	max-height: 500px;
+.canvas>form{
+	padding: 100px;
+	padding-top:80px;
 }
-
-.imageScrollEntry {
-	padding-top:10px;
-	padding-bottom:10px;
-	padding-left:10px;
-	padding-right:10px;
-	background-origin: border-box;
-	background-color: #FFFFFF;
-}
-
-.orderBox {
-	padding-top:10px;
-	padding-left:10px;
-	padding-right:10px;
+#submit{
+	text-align:center;
 }
 
 #map-canvas {
