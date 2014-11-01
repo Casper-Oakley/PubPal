@@ -2,10 +2,10 @@ var map;
 
 function initialize() {
   var mapOptions = {
-    zoom: 8,
+    zoom: 15,
   };
 
-  map = new google.maps.Map(document.getElementById('map-canvas'),
+  var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
   //html5 geolocation
@@ -32,10 +32,14 @@ function initialize() {
   setMarkers(map,pubs);
 }
 
-/*
+
 var pubs = [
-    something something array where data is frome
-  ]; */
+    ['Ancaster Halls', 53.476214, -2.245571, 4],
+    ['Nightingale Halls', 53.476214, -2.245571, 5],
+    ['Cavendish Halls', 53.474362, -2.241751, 3],
+    ['Florence Boot', 53.474362, -2.241751, 2],
+    ['Mooch', 53.473417, -2.251021, 1]
+  ];
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
@@ -54,7 +58,7 @@ function handleNoGeolocation(errorFlag) {
   map.setCenter(options.position);
 }
 
-function setMarkers(map, location) {
+function setMarkers(map, locations) {
   // Add markers to the map
 
   // Marker sizes are expressed as a Size of X,Y
@@ -64,25 +68,28 @@ function setMarkers(map, location) {
   // Origins, anchor positions and coordinates of the marker
   // increase in the X direction to the right and in
   // the Y direction down.
+
+
   var image = {
     url: 'images/pint.png',
     // This marker is 20 pixels wide by 32 pixels tall.
     size: new google.maps.Size(32, 32),
     // The origin for this image is 0,0.
     origin: new google.maps.Point(0,0),
-    // The anchor for this image is the base of the flagpole at 0,32.
+    // The anchor for this image is the base of the pint at 0,32.
     anchor: new google.maps.Point(0, 32)
   };
+
   // Shapes define the clickable region of the icon.
   // The type defines an HTML &lt;area&gt; element 'poly' which
   // traces out a polygon as a series of X,Y points. The final
   // coordinate closes the poly by connecting to the first
   // coordinate.
 
-  /* var shape = {
+  var shape = {
       coords: [1, 1, 1, 32, 32, 32, 32 , 1],
       type: 'poly'
-  }; */
+  };
 
   for (var i = 0; i < locations.length; i++) {
     var pubs = locations[i];
@@ -93,7 +100,7 @@ function setMarkers(map, location) {
         icon: image,
         shape: shape,
         title: pubs[0],
-        zIndex: pubs[3]
+        zIndex: 100,
     });
   }
 }
