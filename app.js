@@ -3,7 +3,13 @@ var express = require('express')
   , app = express()
   , server = require('http').createServer(app)
   , io = require('socket.io').listen(server)
+  , mongodb = require('mongodb')
+  , mongoClient = mongodb.MongoClient
+  , mongoose = require('mongoose')
   , hbs = require('hbs');
+
+var MONGOHQ_URL='mongodb://client:clientpass@ds049180.mongolab.com:49180/heroku_app31187440'
+mongoose.connect(MONGOHQ_URL);
 
 
 // view engine setup
