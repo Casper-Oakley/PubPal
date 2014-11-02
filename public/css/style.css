@@ -3,6 +3,10 @@ body {
 	font: 14px  Verdana, Helvetica, Arial, sans-serif;
 }
 
+.bod{
+	background-image: url("../images/pint.png");
+}
+
 p {
 	font-size: 13px;
 }
@@ -44,4 +48,4 @@ td {
         height: 100%;
         margin: 0px;
         padding: 0px
-      }
+}
