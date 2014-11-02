@@ -9,7 +9,11 @@ body {
 }
 
 p {
-	font-size: 13px;
+	font-size: 15px;
+}
+
+.textcanv{
+	text-align:left;
 }
 
 a>h3 {
@@ -45,7 +49,7 @@ td {
 
 .canvas>form{
 	padding: 100px;
-	padding-top:80px;
+	padding-top:20px;
 }
 #submit{
 	text-align:center;

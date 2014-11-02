@@ -16,15 +16,20 @@
 		<h2> PubPal <small>Motto Motto Motto Motto.</small></h2>
 		<hr>
 		<div class="canvas">
+		<div class="textcanv">
+		<p><big><big>What is PubPal?</big></big></p>
+		<p>PubPal is a web app developed using Node.JS, to provide a simple way to help you plan for an epic night out! PubPal can help you plan routes, setup your friends and signal for them to go to the next bar using Twilio and Yo technology</p>
+		<p>Sign in below, or if you don't have an account, click sign up!</p>
+		</div>
 			<form>
-				<h4>Username</h4>
-				<input type="text" name="Username" id="username">
+				<input type="text" name="Username" id="username" placeholder="Username">
 				<br>
-				<h4>Password</h4>
-				<input type="password" name="Password" id="password">
+				<input type="password" name="Password" id="password" placeholder="Password">
+				<br>
+				<button class="btn" type="button" id="submit">Submit</button>
 				<br>
 				<br>
-				<button type="button" id="submit">Submit</button>
+				<a href="/signup"><button class="btn" type="button" id="signup">Sign Up</button></a>
 			</form>
 		</div>
 		<hr id="alertlocation">

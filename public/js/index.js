@@ -17,4 +17,7 @@ window.onload = function(){
 		$('#alertlocation').after('<div class="alert alert-danger alert-dismissable" id="failed"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> ERROR: Invalid Login. </div>');
 		}
 	});
+	$('#signup').click( function(){
+		window.location.href="/signup";
+	});
 }
