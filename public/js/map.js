@@ -1,4 +1,6 @@
 var map;
+var directionsService = new google.maps.DirectionsService();
+var directionsDisplay = new google.maps.DirectionsRenderer();
 
 function initialize() {
   var mapOptions = {
@@ -8,30 +10,46 @@ function initialize() {
   var map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
 
-  //html5 geolocation
+  //geolocation attempt via HTML5
   if(navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(function(position) {
-      var pos = new google.maps.LatLng(position.coords.latitude,
+      var coords = new google.maps.LatLng(position.coords.latitude,
                                        position.coords.longitude);
+      var directionsService = new google.maps.DirectionsService();
+      var directionsDisplay = new google.maps.DirectionsRenderer();
+      var mapOptions = //Sets map options
+        {
+          zoom: 15,  //Sets zoom level (0-21)
+          center: coords, //zoom in on users location
+          mapTypeControl: true, //allows you to select map type eg. map or satellite
+          navigationControlOptions:
+            {
+              style: google.maps.NavigationControlStyle.SMALL //sets map controls size eg. zoom
+            },
+          mapTypeId: google.maps.MapTypeId.ROADMAP //sets type of map Options:ROADMAP, SATELLITE, HYBRID, TERRIAN
+        };
 
-    var marker = new google.maps.Marker({
-        map: map,
-        position: pos,
-        title: 'You are here'
-    });
+      //map = new google.maps.Map( /*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
+      directionsDisplay.setMap(map);
+      directionsDisplay.setPanel(document.getElementById('panel'));
+      var request = {
+        origin: coords,
+        destination: 'M15 6AA',
+        travelMode: google.maps.DirectionsTravelMode.WALKING
+      };
 
-      map.setCenter(pos);
-    }, function() {
-      handleNoGeolocation(true);
+      directionsService.route(request, function (response, status) {
+        if (status == google.maps.DirectionsStatus.OK) {
+          directionsDisplay.setDirections(response);
+        }
+      });
+
     });
-  } else {
-    // if Browser doesn't support Geolocation
-    handleNoGeolocation(false);
-  }
+ }
 
   setMarkers(map,pubs);
-}
 
+}
 
 var pubs = [
     ['Ancaster Halls', 53.476214, -2.245571, 4],
@@ -40,6 +58,21 @@ var pubs = [
     ['Florence Boot', 53.474362, -2.241751, 2],
     ['Mooch', 53.473417, -2.251021, 1]
   ];
+
+function handleNoGeolocation(errorFlag) {
+  if (errorFlag) {
+    var content = 'Error: The Geolocation service failed.';
+  } else {
+    var content = 'Error: Your browser doesn\'t support geolocation.';
+  }
+  var options = {
+    map: map,
+    position: new google.maps.LatLng(53, -2),
+    content: content
+  };
+  var infowindow = new google.maps.InfoWindow(options);
+  map.setCenter(options.position);
+  }
 
 function handleNoGeolocation(errorFlag) {
   if (errorFlag) {
