@@ -38,6 +38,10 @@ td {
 	max-width: 200px;
 }
 
+.white {
+	color: #CCCCAA;
+}
+
 .canvas {
 	border-style: solid;
 	border-width: 10px;

@@ -10,9 +10,16 @@ var express = require('express')
   , request = require('request')
   , hbs = require('hbs')
   , twilio = require('twilio')
-  , Yo = require('./node_modules/node-yo-master/lib/yo');
+  , Yo = require('./node_modules/node-yo-master/lib/yo')
+  , braintree = require('braintree');
 
 //local variables used
+var gateway = braintree.connect({
+  environment: braintree.Environment.Sandbox,
+  merchantId: "dmy5xrg7yndrzqyh",
+  publicKey: "39jg4jmwpgrp76qn",
+  privateKey: "f0db0260c7fbb23d678e689e8f2a7558"
+  });
 var yo = new Yo({'api_token':'b2da4b8e-5b27-46fb-addb-8172b6b21a4b'});
 var client = new twilio.RestClient('AC37cb5af509c24ae9dbe5c01e48d1f412', '048f0c1de0b8c3978539dac94ac0fe8d');
 var MONGOHQ_URL='mongodb://client:clientpass@ds049180.mongolab.com:49180/heroku_app31187440'
@@ -74,8 +81,8 @@ app.get('/sendTexts', function(req, res){
 	var input = req.query;
 	console.log('number texted from '+req.query.From);
 	//yo everyone in the group
-	
-	//yo yo tester code	
+
+	//yo yo tester code
 	loginMod.findOne({No : req.query.From.replace(/^\+44/,'0')}, function(err, doc){
 		if(err){
 			res.status(404).end();
