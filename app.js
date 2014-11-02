@@ -76,7 +76,7 @@ app.get('/sendTexts', function(req, res){
 	//yo everyone in the group
 	
 	//yo yo tester code	
-	loginMod.findOne({No : req.query.From.replace(/^0/,'+44')}, function(err, doc){
+	loginMod.findOne({No : req.query.From.replace(/^\+44/,'0')}, function(err, doc){
 		yoMod.find({Gno : doc.User}, function(err, doc){
 			doc.forEach(function(entry){
 				yo.yo(entry.Yoname, function(err, data){
