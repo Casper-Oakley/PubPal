@@ -55,6 +55,7 @@ function initialize() {
         radius: 500,
         types: ['bar']
       };
+	  
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
       service.nearbySearch(request, callback);
