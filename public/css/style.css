@@ -4,15 +4,19 @@ body {
 }
 
 .bod{
-	background-image: url("../images/pint.png");
+	background-size: 100%;
+	background-image: url("../imgs/beer4.jpg");
 }
 
 p {
 	font-size: 13px;
 }
 
+a>h3 {
+  color: #2B2B2B;
+}
 a {
-  color: #00B7FF;
+	color: #2B2B2B;
 }
 
 table{
@@ -33,6 +37,9 @@ td {
 .canvas {
 	border-style: solid;
 	border-width: 10px;
+	background-color: #958585;
+	filter:alpha(opacity=60);
+	opacity:0.6;
 	display: inline-block;
 }
 

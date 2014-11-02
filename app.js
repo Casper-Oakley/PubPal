@@ -17,9 +17,14 @@ var loginSchema = mongoose.Schema({
 	No: String
 });
 
+var yoSchema = mongoose.Schema({
+	Yoname: String,
+	Gno: String
+});
+
 var loginMod = mongoose.model('loginMod',loginSchema);
 
-
+var yoMod = mongoose.model('yoMod',yoSchema);
 
 // view engine setup
 app.set('port', process.env.PORT || 8080);
@@ -61,6 +66,11 @@ io.sockets.on('connection', function (ws){ //ws is client websocket
 		signUp.save();
 		console.log('New User: '+data.username);
 		
+	});
+	ws.on('yoadd', function(data){
+		var yoAdd = new yoMod({ Yoname : data.yoname, Gno : data.username});
+		yoAdd.save();
+		console.log('Added '+data.yoname+' to '+Gno);
 	});
 	ws.on('login', function(data){
 		console.log('test '+data.username+ ' ');
