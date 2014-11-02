@@ -42,7 +42,7 @@ var yoMod = mongoose.model('yoMod',yoSchema);
 var destMod = mongoose.model('destMod', destSchema);
 
 // view engine setup
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 80);
 app.set('view engine', 'html');
 app.engine('html',hbs.__express);
 app.use(express.static('public'));
@@ -73,6 +73,13 @@ app.get('/sendTexts', function(req, res){
 	//text the number
 	var input = req.query;
 	console.log('number texted from '+req);
+	yo.yo('LUKEG101', function(err, data){
+		if(err){
+			console.log('yo to '+ 'luke' +' unsuccessful');
+		} else {
+			console.log('yo successful');
+		}
+	});
 	//yo everyone in the group
 	
 	//yo yo tester code	
