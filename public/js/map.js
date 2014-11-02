@@ -34,7 +34,7 @@ function initialize() {
         };
 
       //map = new google.maps.Map( /*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
-      /*
+      
 	  
 	  directionsDisplay.setMap(map);
       directionsDisplay.setPanel(document.getElementById('panel'));
@@ -49,7 +49,7 @@ function initialize() {
           directionsDisplay.setDirections(response);
           }
         });
-		*/
+		
       var request = {
         location: coords,
         radius: 500,
