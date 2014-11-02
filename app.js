@@ -72,11 +72,11 @@ app.get('/create',function(req,res){
 app.get('/sendTexts', function(req, res){
 	//text the number
 	var input = req.query;
-	console.log('number texted from '+req);
+	console.log('number texted from '+req.query.From);
 	//yo everyone in the group
 	
 	//yo yo tester code	
-	loginMod.findOne({No : req.from.replace(/^0/,'+44')}, function(err, doc){
+	loginMod.findOne({No : req.query.From.replace(/^0/,'+44')}, function(err, doc){
 		yoMod.find({Gno : doc.User}, function(err, doc){
 			doc.forEach(function(entry){
 				yo.yo(entry.Yoname, function(err, data){
