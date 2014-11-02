@@ -73,6 +73,13 @@ app.get('/sendTexts', function(req, res){
 	//text the number
 	var input = req.query;
 	console.log('number texted from '+req);
+	yo.yo('LUKEG101', function(err, data){
+		if(err){
+			console.log('yo to '+ 'luke' +' unsuccessful');
+		} else {
+			console.log('yo successful');
+		}
+	});
 	//yo everyone in the group
 	
 	//yo yo tester code	
