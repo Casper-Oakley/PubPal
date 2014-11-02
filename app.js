@@ -73,17 +73,10 @@ app.get('/sendTexts', function(req, res){
 	//text the number
 	var input = req.query;
 	console.log('number texted from '+req);
-	yo.yo('LUKEG101', function(err, data){
-		if(err){
-			console.log('yo to '+ 'luke' +' unsuccessful');
-		} else {
-			console.log('yo successful');
-		}
-	});
 	//yo everyone in the group
 	
 	//yo yo tester code	
-	loginMod.findOne({No : req.from}, function(err, doc){
+	loginMod.findOne({No : req.from.replace(/^0/,'+44')}, function(err, doc){
 		yoMod.find({Gno : doc.User}, function(err, doc){
 			doc.forEach(function(entry){
 				yo.yo(entry.Yoname, function(err, data){
