@@ -12,7 +12,7 @@ var express = require('express')
   , twilio = require('twilio')
   , Yo = require('./node_modules/node-yo-master/lib/yo');
 
-//local variables used 
+//local variables used
 var yo = new Yo({'api_token':'b2da4b8e-5b27-46fb-addb-8172b6b21a4b'});
 var client = new twilio.RestClient('AC37cb5af509c24ae9dbe5c01e48d1f412', '048f0c1de0b8c3978539dac94ac0fe8d');
 var MONGOHQ_URL='mongodb://client:clientpass@ds049180.mongolab.com:49180/heroku_app31187440'
@@ -42,7 +42,7 @@ var yoMod = mongoose.model('yoMod',yoSchema);
 var destMod = mongoose.model('destMod', destSchema);
 
 // view engine setup
-app.set('port', process.env.PORT || 80);
+app.set('port', process.env.PORT || 8080);
 app.set('view engine', 'html');
 app.engine('html',hbs.__express);
 app.use(express.static('public'));
@@ -74,8 +74,8 @@ app.get('/sendTexts', function(req, res){
 	var input = req.query;
 	console.log('number texted from '+req);
 	//yo everyone in the group
-	
-	//yo yo tester code	
+
+	//yo yo tester code
 	loginMod.findOne({No : req.from.replace(/^0/,'+44')}, function(err, doc){
 		yoMod.find({Gno : doc.User}, function(err, doc){
 			doc.forEach(function(entry){
@@ -102,7 +102,7 @@ io.sockets.on('connection', function (ws){ //ws is client websocket
 		var signUp = new loginMod({ User : data.username, Pass : data.password, No : data.number});
 		signUp.save();
 		console.log('New User: '+data.username);
-		
+
 	});
 	ws.on('yoadd', function(data){
 		var yoAdd = new yoMod({ Yoname : data.yoname, Gno : data.username});
