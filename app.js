@@ -99,4 +99,5 @@ io.sockets.on('connection', function (ws){ //ws is client websocket
 		var destination = new destMod({name : place.name,location : place.geometry.location, number : order, username : document.cookie});
 		destination.save();
 		console.log('Added '+data.yoname+' to '+Gno);
+	});
 });
