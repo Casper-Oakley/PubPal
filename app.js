@@ -42,7 +42,7 @@ var yoMod = mongoose.model('yoMod',yoSchema);
 var destMod = mongoose.model('destMod', destSchema);
 
 // view engine setup
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 80);
 app.set('view engine', 'html');
 app.engine('html',hbs.__express);
 app.use(express.static('public'));
