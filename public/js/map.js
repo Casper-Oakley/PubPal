@@ -34,13 +34,13 @@ function initialize() {
         };
 
       //map = new google.maps.Map( /*creates Map variable*/ document.getElementById("map"), mapOptions /*Creates a new map using the passed optional parameters in the mapOptions parameter.*/);
-      
-	  
+
+
 	  directionsDisplay.setMap(map);
       directionsDisplay.setPanel(document.getElementById('panel'));
       var request = {
         origin: coords,
-        destination: 'M15 6AA',
+        destination: 'M1 5WW',
         travelMode: google.maps.DirectionsTravelMode.WALKING
       };
 
@@ -49,13 +49,13 @@ function initialize() {
           directionsDisplay.setDirections(response);
           }
         });
-		
+
       var request = {
         location: coords,
         radius: 500,
         types: ['bar']
       };
-	  
+
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
       service.nearbySearch(request, callback);
@@ -96,10 +96,10 @@ function createMarker(place) {
 google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
-	
+
 	socket.emit('destination', {name : place.name, number : order, username : document.cookie});
 	order++;
-	
+
   });
 }
   //setMarkers(map,pubs);
