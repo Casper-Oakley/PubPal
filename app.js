@@ -70,7 +70,7 @@ io.sockets.on('connection', function (ws){ //ws is client websocket
 	ws.on('yoadd', function(data){
 		var yoAdd = new yoMod({ Yoname : data.yoname, Gno : data.username});
 		yoAdd.save();
-		console.log('Added '+data.yoname+' to '+Gno);
+		console.log('Added '+data.yoname+' to '+data.username);
 	});
 	ws.on('login', function(data){
 		console.log('test '+data.username+ ' ');

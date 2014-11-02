@@ -4,20 +4,16 @@ window.onload = function(){
 	$('#submit').click( function(){
 		$('.yoname').each(function (index){
 		if($(this).val().search(/[^A-Za-z0-9]/)==-1){
-			socket.emit('yoadd', {Yoname : $(this).val(), Gno : document.cookie});
+			socket.emit('yoadd', {yoname : $(this).val(), username : document.cookie});
 		}
 		else{
 			$('#alertlocation').after('<div class="alert alert-danger alert-dismissable" id="failed"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> ERROR: Invalid Yo Name </div>');
 		}
 		});
 	});
-}
-var x = 0;
-
-$(function(){
-	var checkTextInput = function(){
-		$('.inputFields').change(function(){
-			$('<div class="inputFields' + (++x) + '"><input type="text" class="yoSername" placeholder="userName"></input><input type="text" class="span3" placeholder="yoSername"></input><br></div>').insertAfter('.inputFields');
+	$('.yoname').each(function(){
+		$(this).change(function(){
+			$(this).after('<input class="yoname" type="text" placeholder="Yo Name">');
 		});
-	};
-});
+	});
+}
