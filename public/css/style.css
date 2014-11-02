@@ -39,7 +39,10 @@ td {
 }
 
 .white {
-	color: #CCCCAA;
+	color: #2B2B2B;
+	background-color: #CCCCAA;
+	filter:alpha(opacity=60);
+	opacity:0.6;
 }
 
 .canvas {
