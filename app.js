@@ -77,17 +77,29 @@ app.get('/sendTexts', function(req, res){
 	
 	//yo yo tester code	
 	loginMod.findOne({No : req.query.From.replace(/^\+44/,'0')}, function(err, doc){
-		yoMod.find({Gno : doc.User}, function(err, doc){
-			doc.forEach(function(entry){
-				yo.yo(entry.Yoname, function(err, data){
-					if(err){
-						console.log('yo to '+ entry.Yoname +' unsuccessful');
-					} else {
-						console.log('yo successful');
-					}
-				});
+		if(err){
+			res.status(404).end();
+		}
+		else{
+			yoMod.find({Gno : doc.User}, function(err, doc){
+				if(err){
+					res.status(404).end();
+				}
+				else{
+					doc.forEach(function(entry){
+						yo.yo(entry.Yoname, function(err, data){
+							if(err){
+								console.log('yo to '+ entry.Yoname +' unsuccessful');
+								res.status(200).end();
+							} else {
+								console.log('yo successful');
+								res.status(200).end();
+							}
+						});
+					});
+				}
 			});
-		});
+		}
 	});
 	//reply with the next address in the location
 });

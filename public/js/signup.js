@@ -4,7 +4,7 @@ window.onload = function(){
 	$('#submit').click( function(){
 		if($('#username').val().search(/[^A-Za-z0-9]/)==-1 && $('#password').val().search(/[^A-Za-z0-9]/)==-1 && $('#number').val().search(/0-9/)==-1){
 			socket.emit('signup', {username : $('#username').val(),password : $('#password').val(), number : $('#number').val()});
-			document.cookie=JSON.stringify($('#username').val());
+			document.cookie=$('#username').val();
 			window.location.href="/home";
 			}
 		else{

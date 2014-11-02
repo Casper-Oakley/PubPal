@@ -11,7 +11,7 @@ window.onload = function(){
 	});
 	socket.on('accept', function(data){
 		if(data){
-			document.cookie=JSON.stringify($('#username').val());
+			document.cookie=$('#username').val();
 			window.location.href="/home";
 		} else{
 		$('#alertlocation').after('<div class="alert alert-danger alert-dismissable" id="failed"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> ERROR: Invalid Login. </div>');
