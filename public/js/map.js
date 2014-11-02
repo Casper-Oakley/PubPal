@@ -48,7 +48,7 @@ function initialize() {
       var request = {
         location: coords,
         radius: 500,
-        types: ['store']
+        types: ['bar']
       };
       infowindow = new google.maps.InfoWindow();
       var service = new google.maps.places.PlacesService(map);
