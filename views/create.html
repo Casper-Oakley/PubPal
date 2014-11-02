@@ -13,10 +13,16 @@
 		<!--jscolor under LGPL, no permission needed to use. Origin: http://jscolor.com/-->
 	</head>
 	<body>
+
 	<div class="col-md-7 col-md-offset-3">
 		<h2> PubPal <small>Motto Motto Motto Motto.</small></h2>
 		<hr>
-		<div class="canvas">
+		<form method="POST" action="/create" class="navbar-form pull-left" id="userInput">	
+			<div class="canvas">
+					<div id="inputFields"><input type="text" class="span2" placeholder="userName"></input>
+					<input type="text" class="span3" placeholder="yoSername"></input><br></div>
+					<button type="submit" class=btn "btn-warning">Plan yo crawl</button>
+		</form>
 		</div>
 		<hr id="alertlocation">
 	</div>
