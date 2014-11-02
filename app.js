@@ -11,6 +11,15 @@ var express = require('express')
 var MONGOHQ_URL='mongodb://client:clientpass@ds049180.mongolab.com:49180/heroku_app31187440'
 mongoose.connect(MONGOHQ_URL);
 
+var loginSchema = mongoose.Schema({
+	User: String,
+	Pass: String,
+	No: String
+});
+
+var loginMod = mongoose.model('loginMod',loginSchema);
+
+
 
 // view engine setup
 app.set('port', process.env.PORT || 8080);
@@ -45,6 +54,24 @@ server.listen(app.get('port'), function(){
 	console.log('Express server up and running on port ' + app.get('port'));
 });
 
+
 io.sockets.on('connection', function (ws){ //ws is client websocket
-	//do something with ws
+	ws.on('signup', function(data){
+		var signUp = new loginMod({ User : data.username, Pass : data.password, No : data.number});
+		signUp.save();
+		console.log('New User: '+data.username);
+		
+	});
+	ws.on('login', function(data){
+		console.log('test '+data.username+ ' ');
+		loginMod.findOne({User: data.username}, function (err, doc){
+			console.log(data.password + " and "+doc.Pass);
+			if(doc.Pass == data.password){
+				ws.emit('accept',true);
+			}
+			else{
+				ws.emit('accept',false);
+			}
+		});
+	});
 });
