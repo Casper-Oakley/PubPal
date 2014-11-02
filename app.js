@@ -72,16 +72,22 @@ app.get('/create',function(req,res){
 app.get('/sendTexts', function(req, res){
 	//text the number
 	var input = req.query;
-	console.log('number texted');
+	console.log('number texted from '+req);
 	//yo everyone in the group
 	
 	//yo yo tester code	
-	yo.yo('LUKEG101', function(err, data){
-		if(err){
-			console.log('yo unsuccessful');
-		} else {
-			console.log('yo successful');
-		}
+	loginMod.findOne({No : req.from}, function(err, doc){
+		yoMod.find({Gno : doc.User}, function(err, doc){
+			doc.forEach(function(entry){
+				yo.yo(entry.Yoname, function(err, data){
+					if(err){
+						console.log('yo to '+ entry.Yoname +' unsuccessful');
+					} else {
+						console.log('yo successful');
+					}
+				});
+			});
+		});
 	});
 	//reply with the next address in the location
 });
