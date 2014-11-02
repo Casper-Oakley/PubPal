@@ -26,8 +26,6 @@ var yoSchema = mongoose.Schema({
 
 var destSchema = mongoose.Schema({
 	Location: String,
-	Lat: Number,
-	Long: Number,
 	Index: Number,
 	User: String
 });
@@ -106,7 +104,8 @@ io.sockets.on('connection', function (ws){ //ws is client websocket
 	});
 	//socket.emit('destination', {name : place.name,location : place.geometry.location, number : order, username : document.cookie});
 	ws.on('destination', function(data){
-		var destination = new destMod({name : place.name,location : place.geometry.location, number : order, username : document.cookie});
+		var destination = new destMod({Location : data.name, Index : data.number, User : data.username});
 		destination.save();
+		console.log('yay'+data.name);
 	});
 });

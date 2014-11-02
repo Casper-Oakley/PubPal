@@ -94,7 +94,7 @@ google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
 	
-	socket.emit('destination', {name : place.name,location : place.geometry.location, number : order, username : document.cookie});
+	socket.emit('destination', {name : place.name, number : order, username : document.cookie});
 	order++;
 	
   });
