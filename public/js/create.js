@@ -13,7 +13,7 @@ window.onload = function(){
 	});
 	$('.yoname').each(function(){
 		$(this).change(function(){
-			$(this).after('<input class="yoname" type="text" placeholder="Yo Name">');
+			$(this).after('<input class="yoname" type="text" placeholder="Yo Name"><br>');
 		});
 	});
 }
