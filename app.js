@@ -6,8 +6,10 @@ var express = require('express')
   , mongodb = require('mongodb')
   , mongoClient = mongodb.MongoClient
   , mongoose = require('mongoose')
-  , hbs = require('hbs');
+  , hbs = require('hbs')
+  , twilio = require('twilio');
 
+var client = new twilio.RestClient('AC37cb5af509c24ae9dbe5c01e48d1f412', '048f0c1de0b8c3978539dac94ac0fe8d');
 var MONGOHQ_URL='mongodb://client:clientpass@ds049180.mongolab.com:49180/heroku_app31187440'
 mongoose.connect(MONGOHQ_URL);
 
@@ -53,6 +55,14 @@ app.get('/signup',function(req,res){
 
 app.get('/create',function(req,res){
 	res.render('create',{title:'PubPal - Create'});
+});
+
+app.get('/sendTexts', function(req, res){
+	//text the number
+	var input = req.query;
+	console.log('number texted');
+	//yo everyone in the group
+
 });
 
 server.listen(app.get('port'), function(){
