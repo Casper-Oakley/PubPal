@@ -94,4 +94,9 @@ io.sockets.on('connection', function (ws){ //ws is client websocket
 			}
 		});
 	});
+	//socket.emit('destination', {name : place.name,location : place.geometry.location, number : order, username : document.cookie});
+	ws.on('destination', function(data){
+		var destination = new destMod({name : place.name,location : place.geometry.location, number : order, username : document.cookie});
+		destination.save();
+		console.log('Added '+data.yoname+' to '+Gno);
 });

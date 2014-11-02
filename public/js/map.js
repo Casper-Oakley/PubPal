@@ -2,6 +2,9 @@ var map;
 var infowindow;
 var directionsService = new google.maps.DirectionsService();
 var directionsDisplay = new google.maps.DirectionsRenderer();
+var host = location.origin.replace(/^http/,'ws');
+var socket = io.connect(host, {secure: true});
+var order = 0;
 
 function initialize() {
   var mapOptions = {
@@ -90,6 +93,10 @@ function createMarker(place) {
 google.maps.event.addListener(marker, 'click', function() {
     infowindow.setContent(place.name);
     infowindow.open(map, this);
+	
+	socket.emit('destination', {name : place.name,location : place.geometry.location, number : order, username : document.cookie});
+	order++;
+	
   });
 }
   //setMarkers(map,pubs);
